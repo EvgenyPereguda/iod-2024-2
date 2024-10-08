@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <title>Dynamic News</title>
+  </head>
+  <template id="news-template">
+    <div class="card col-8" style="width: 18rem; margin: 10px">
+      <div class="card-body">
+        <h5 class="card-title">Car title</h5>
+        <p class="card-text">Car text.</p>
+      </div>
+    </div>
+  </template>
+  <body></body>
+    <div id="news-list" class="row"></div>
+    <button type="button" class="btn btn-primary" onclick="stopReload()">Stop Reloading</button>
+    <div>
+        <div style="margin: 10px;">
+            <label>News Item Title</label>
+            <input type="text" id="newsItemTitle">
+        </div>
+        <div>
+            <label>News Item Content</label>
+            <input type="text" id="newsItemContent">
+            <button type="button" class="btn btn-primary" onclick="addNewsItem()">Add News Item</button>
+        </div>
+    </div>
+    <script>
+      let newsList = [
+        {
+          id: 1,
+          title: "Election Results",
+          content: "Newly elected minister...",
+        },
+        { id: 2, title: "Sporting Success", content: "World Cup winners..." },
+        {
+          id: 3,
+          title: "Tornado Warning",
+          content: "Residents should prepare...",
+        },
+      ];
+
+      // clear news list
+      function clearNewsList() {
+        
+        const newsList = document.getElementById("news-list");
+
+        while (newsList.firstChild) {
+            newsList.removeChild(newsList.lastChild);
+        }
+
+      }  
+
+      // add news item from form into newsList
+      function addNewsItem(){
+
+        let lnewsTitle = document.getElementById("newsItemTitle").value;
+
+        let lnewsContent = document.getElementById("newsItemContent").value;
+
+        let lnewsItem = {
+            id: newsList.length + 1,
+            title: lnewsTitle,
+            content: lnewsContent,
+        }
+
+        newsList.push(lnewsItem);   
+      }
+
+      // create card and place news item into "news-list" 
+      function placeNewsItem(news) {
+        const template = document
+          .getElementById("news-template")
+          .content.cloneNode(true);
+        template.querySelector(".card-title").innerText = news.title;
+        template.querySelector(".card-text").innerText = news.content;
+        document.querySelector("#news-list").appendChild(template);
+      }      
+
+      // relaod "news-list" function
+      const reload = function () {          
+
+        clearNewsList();
+        newsList.forEach((item) => placeNewsItem(item));
+
+        }
+
+      
+        // reload the news list every 5s
+       let reloadID = setInterval(function () {          
+
+        reload();
+
+        }, 5000);
+
+        // stop reload
+        function stopReload(){
+            clearInterval(reloadID);
+        }               
+
+        reload();
+
+    </script>
+  </body>
+</html>

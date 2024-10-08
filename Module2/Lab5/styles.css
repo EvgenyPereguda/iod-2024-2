@@ -1,0 +1,131 @@
+:root{
+    --back_color: #7b68ee;
+    --section_color: #b1a5f0;
+}
+
+.text-align{
+    text-align: center;
+}
+
+.title{
+    text-align: center;
+}
+
+.imageBorder{
+    border-radius: 50%;  
+    margin: auto;
+    display:block;
+}
+
+.personalInfoDiv{
+    padding-left: 10px;
+}
+
+a {
+    text-decoration: underline;
+    text-align: center;
+    display:block;
+}
+
+a:hover{
+    color: white;
+    cursor: pointer;
+}
+
+a:active{
+    color: white;
+    cursor: pointer;
+}
+
+a:focus{
+    color: white;
+    cursor: pointer;
+}
+
+.mainSection{
+    background-color: var(--section_color);
+    padding: 5px;
+}
+
+.workPosition{
+    padding-left: 5px;
+}
+
+.container{
+    background-color:white;
+    display: flex;
+    flex-direction:column;
+    min-height: 20vw;
+    gap: 10px;
+}
+
+.infoContainer{
+    background-color: red;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 10;
+}
+
+.shortinfo{
+    background-color: var(--back_color);
+    flex-grow: 4;
+    flex-basis:  auto;
+}
+
+.fullInfo{
+    background-color: white;
+    flex-grow: 10;
+    padding-left: 10px;
+}
+
+.copyrigntInfo{
+    background-color: var(--back_color);
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    padding: 20px;
+}
+
+.skilsList{    
+    list-style-type: none;
+    font-weight: bold;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    font-size: 25px;
+    margin-left: -40px;
+}
+
+.skillStyle{
+    margin: 30px;
+    text-align: center;
+}
+
+.experienceList{
+
+}
+
+.experienceList li{
+    font-weight: bold;
+}
+
+@media (min-width: 769px){
+   
+
+    .infoContainer{
+        flex-direction:row;
+    }
+
+    .shortinfo{
+        max-width: 250px;
+    }
+
+    .text-align{
+        text-align: left;
+    }
+
+    a{
+        text-align: left;
+    }
+
+}

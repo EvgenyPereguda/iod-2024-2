@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: #e3f2fd;
+      }
+      .artist {
+        padding: 10px;
+        border: 1px, black;
+      }
+      .artist-name {
+        font-weight: 600;
+        font-size: 3em;
+        padding: 0 0 10px 0;
+      }
+      .portfolio-list{
+        display: flex;
+      }
+      .portfolio{
+        padding: 5px;
+      }
+      .portfolio-title {
+        font-weight: 300;
+        font-size: 2em;
+        padding: 0 0 10px 0;
+      }
+      .portfolio-image {
+        height: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <template id="artist-template">
+      <div class="artist">
+        <div class="artist-body">
+          <div class="artist-name"></div>
+          <div class="portfolio-list"></div>
+        </div>
+      </div>
+    </template>
+    <template id="portfolio-template">
+      <div class="portfolio">
+        <div class="portfolio-title"></div>
+        <img class="portfolio-image" />
+      </div>
+    </template>
+    <div id="artist-list"></div>
+    <script>
+      function addCard(title, portfolio) {
+        // clone the artist template
+        const artist_template = document
+          .getElementById("artist-template")
+          .content.cloneNode(true);
+
+        // clone the portfolio template
+        const portfolio_template = document
+          .getElementById("portfolio-template")
+          .content.cloneNode(true);
+
+        artist_template.querySelector(".artist-name").innerText = title;
+
+        const portfolio_list = artist_template.querySelector(".portfolio-list");
+
+        for (let key of portfolio) {
+          const portfolio = portfolio_template
+            .querySelector(".portfolio")
+            .cloneNode(true);
+
+            portfolio.querySelector(".portfolio-title").innerText = key.title;
+
+            portfolio.querySelector(".portfolio-image").src = key.url;
+
+            portfolio.querySelector(".portfolio-image").alt = key.title;
+
+            portfolio_list.appendChild(portfolio);
+        }
+
+        document.querySelector("#artist-list").appendChild(artist_template);
+      }
+
+      const artist = {
+        name: "Van Gogh",
+        portfolio: [
+          {
+            title: "portrait",
+            url: "https://collectionapi.metmuseum.org/api/collection/v1/iiif/436532/1671316/main-image",
+          },
+          {
+            title: "sky",
+            url: "https://mymodernmet.com/wp/wp-content/uploads/2020/11/White-house-night-van-goh-worldwide-2.jpg",
+          },
+        ],
+      };
+
+      addCard(artist.name, artist.portfolio);
+    </script>
+  </body>
+</html>

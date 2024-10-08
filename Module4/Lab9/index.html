@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>eCharts</title>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.1/dist/echarts.min.js"></script>
+  </head>
+  <body>
+    <!-- Prepare a DOM with a defined width and height for ECharts -->
+    <div id="main" style="width: 900px; height: 600px"></div>
+    <script type="text/javascript">
+
+
+
+      // Specify the configuration items and data for the chart
+
+      fetch("https://fakestoreapi.com/products")
+        .then((response) => response.json())
+        .then((json) => {
+
+            const map1 = new Map();
+
+        for(let item of json)
+        {
+            if(map1.has(item.category)){
+                map1.set(item.category, map1.get(item.category) + 1)
+            }
+            else{
+                map1.set(item.category, 1)
+            }
+        }
+
+        const lcount = new Array();
+        const lcategories = new Array();
+
+        for(let item of map1)
+        {
+            lcategories.push(item[0]);
+            lcount.push(item[1]);
+        }
+
+        let options = {
+                title: { text: "Fake Store Categories" },
+                xAxis: {
+                data: lcategories,
+                },
+                yAxis: {},
+                series: [
+                {
+                    name: "# products",
+                    type: "bar",
+                    data: lcount,
+                },
+                ],
+            };
+        
+            return options
+        })
+        .then((options) => {
+          // Display the chart
+          myChart.setOption(options);
+        });
+      // Initialise the echarts instance based on the prepared div
+      let myChart = echarts.init(document.getElementById("main"));
+    </script>
+  </body>
+</html>

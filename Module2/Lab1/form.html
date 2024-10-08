@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+</head>
+
+<body>
+
+  <form method="POST" action="http://localhost:3000/profile">
+    <div>
+      <label>First name:</label>
+      <input type="text" name="firstName" >
+    </div>    <div>
+      <label>Last name:</label>
+      <input type="text" name="lastName" >
+    </div>
+
+    <br/>
+
+    <h3>My favourite coding language:</h3>
+    <div>      
+      <span>
+        <label>C++:</label>
+        <input type="radio" name="proglang" value="C++" />
+      </span>
+      
+      <span>
+        <label>C#:</label>
+        <input type="radio" name="proglang" value="C#" checked/>
+      </span>
+      
+      <span>
+        <label>JavaScript:</label>
+        <input type="radio" name="proglang" value="JavaScript" />
+      </span>
+    </div>
+
+    
+    <br/>
+
+    <h3>My vehicle types:</h3>
+    <div>
+      <div>
+        <label>Sedan:</label>
+        <input type="checkbox" name="myTypeVehicle" value="Sedan"/>
+      </div>
+      
+      <div>
+        <label>4WD:</label>
+        <input type="checkbox" name="myTypeVehicle" value="4WD"/>
+      </div>
+      
+      <div>
+        <label>Petrol:</label>
+        <input type="checkbox" name="myTypeVehicle" value="Petrol"/>
+      </div>
+    </div>
+
+    <br/>
+
+    <h3>Choose the brand of car:</h3>
+    <select name="brandOfCar">
+      <option>Holden</option>
+      <option>Isuzu</option>
+      <option>Fiat</option>
+    </select>
+
+    <div>
+      <button type="submit">Submit form</button>
+    </div>
+
+  </form>
+
+  <header>
+    <nav>
+      <a href="./index.html">Home</a>
+    </nav>
+  </header>
+
+  <main>
+  </main>
+
+  <footer>Copyright &copy; 2024</footer>
+</body>
+
+</html>

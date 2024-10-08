@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Module 1 Exercise 3</title>
+
+        <link rel="stylesheet" href="exercise3.css"/>
+
+        <!--style>
+            body { font-family: sans-serif; margin:
+                0; }
+            .container { display: flex; min-height:
+                100vh; align-items: stretch; }
+            .column { background: goldenrod; display:
+                flex; flex-direction: column; justify-content:
+                center; align-items: center; flex:
+                1; }
+            .btnColumn1{background-color: green;}
+            .btnColumn2{background-color: yellow;}
+        </style-->
+
+    </head>
+    <body>
+        <div class="container">
+
+            <div class="column" id="column1">
+
+                <img alt="Tabby cat" width="200" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Cat_November_2010-1a.jpg/330px-Cat_November_2010-1a.jpg"> <br/>
+                <h1 id="heading1">Hello</h1><br/>
+                <input id="inputColumn1" type="text"> 
+
+                <button id="btnColumn1" class="btnColumn1" onclick="btnColumn1Color()">Change Me</button>
+            </div>
+            <div class="column" id="column2">
+
+                <img alt="cat" width="200" src="https://i.natgeofe.com/n/4cebbf38-5df4-4ed0-864a-4ebeb64d33a4/NationalGeographic_1468962_3x4.jpg"><br/>
+                <h1 id="heading2">World</h1><br/>
+                <input id="inputColumn2" type="text"> 
+
+                <button id="btnColumn2" class="btnColumn2" onclick="btnColumn2Color()">Change Me</button>
+
+            </div>
+        </div>
+        <script src="exercise3.js"></script>
+        <!--script>/
+            function btnColumn1Color(){
+                document.getElementById("column1").style.backgroundColor = "gray";
+                document.getElementById("column1").style.color = "white";
+
+                document.getElementById("heading1").innerText = document.getElementById("inputColumn1").value;
+                
+            }
+            function btnColumn2Color(){
+                document.getElementById("column2").style.backgroundColor = "magenta";
+                document.getElementById("column2").style.color = "white";
+
+                document.getElementById("heading2").innerText = document.getElementById("inputColumn2").value;
+            }
+        </script-->
+    </body>
+</html>

@@ -1,0 +1,30 @@
+<html>
+    <body>
+        <h2>A Simple JavaScript Function</h2>
+        <!-- This example button calls a function
+        which displays an alert: -->
+        <p id="demo"></p>
+        <!--button onclick="helloWorld()">Say Hello</button-->
+
+        <button id="btn" onclick="changeColor()">Change Color</button>
+
+
+        <script>
+        function helloWorld(){
+        alert('Hello World!')
+        }
+
+        var lpreColor = "";
+        var lNewColor = "red";
+
+        function changeColor(){
+
+            lpreColor = document.getElementById("btn").style.backgroundColor;
+            
+            document.getElementById("btn").style.backgroundColor = lNewColor;
+
+            lNewColor = lpreColor;
+        }
+        </script>
+    </body>
+</html>

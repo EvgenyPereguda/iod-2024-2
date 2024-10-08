@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #333;
+        padding: 1rem;
+        position: relative;
+        color: white;
+      }
+      
+      .navbar-brand a {
+        color: white;
+        text-decoration: none;
+        font: 1.5rem;
+      }
+      
+      .navbar-toggle {
+        font-size: 1rem;
+        background-color: none;
+        border: none;
+        cursor: pointer;
+        display: block; /* Visible on mobile */
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        border: none;
+      }
+      
+      .navbar-menu {
+        list-style: none;
+        display: none; /* Hidden on mobile */
+        flex-direction: column;
+        width: 100%;
+        background-color: #444;
+        position: absolute;
+        top: 60px;
+        left: 0px;
+        margin: 0px;
+      }
+      
+      .navbar-menu.active {
+        display: flex;
+      }
+      
+      .navbar-menu li a {
+        text-decoration: none;
+        color: white;
+        display: block;
+        padding: 1rem;
+      }
+      
+      @media (min-width: 769px) {
+        .navbar {
+          background-color: red;
+        }
+      
+        .navbar-menu {
+          display: flex;
+          flex-direction: row;
+          justify-content: end;
+          position: static;
+          background-color: transparent;
+      
+          gap: 15px;
+        }
+      
+        .navbar-toggle {
+          display: none;
+        }
+      
+        .navbar-menu li a {
+          padding: 0;
+        }
+      }
+
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <a href="#">Brand</a>
+            <button class="navbar-toggle" id="navbarToggle">
+                ☰
+            </button>
+        </div>
+        <ul class="navbar-menu" id="navbarMenu">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+    <script src="./index.js"></script>
+</body>
+</html>
