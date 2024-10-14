@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- use the most recent version -->
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Bootstrap demo</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    
+    <template id="card-template">
+      <div class="col" style="margin-top: 1rem;">
+        <div class="card" style="width: 18rem">
+          <div style="height: 28rem;">
+            <img class="card-img-top" style="max-width:100%;max-height:100%;" />
+          </div>
+          <img class="icon" width="45px" height="45px" style="margin-top: -45px;"/>
+          <div class="card-body">
+            <h2 class="card-title"></h2>
+            <p class="card-text"></p>
+          </div>
+          <div class="card-footer">
+            <div id="priceID" ></div>
+            <p class="card-text mx-auto text-center"></p>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <div>
+
+      <nav class="navbar sticky-top navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Fake Store</a>
+  
+          <div>          
+            <input class="mr" type="search" placeholder="Search" aria-label="Search" id="searchInputID">
+            <button class="btn btn-outline-success my" onclick="search()" >Search</button>
+          </div>
+          <div>
+            <label>Categories:</label>
+            <select class="category-select" onchange="showSelected()" >
+              <option value="">All</option>
+            </select>            
+            <label>Order:</label>
+            <select class="order-select" onchange="showOrdered()" >
+              <option value=""></option>
+              <option value="byPrice&uarr;">by price &uarr;</option>
+              <option value="byPrice&darr;">by price &darr;</option>
+              <option value="byTitle&rarr;">by title A &rarr; Z</option>
+              <option value="byTitle&larr;">by title A &larr; Z</option>
+            </select>
+          </div>
+        </div>
+      </nav>
+      <!--Grid-->
+      <div class="container">
+        <div
+          id="card-list"
+          class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-4"
+        ></div>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+
+      function showOrdered(features = ''){
+        showSelected(features, document.querySelector(".order-select").value);   
+      }
+
+      function search(){
+        showOrdered(document.querySelector("#searchInputID").value);   
+      }
+
+
+      function showSelected(features = '', order = ''){
+
+        const category = document.querySelector(".category-select").value;
+
+        loadItems(category, features, order);
+
+        if(features){
+                document.querySelector("#searchInputID").value = '';
+        }
+
+        if(!order){
+                document.querySelector(".order-select").value = '';
+        }
+      }
+      
+
+      // clear card list
+      function clearCardList() {
+        
+        const cardList = document.getElementById("card-list");
+
+        while (cardList.firstChild) {
+          cardList.removeChild(cardList.lastChild);
+        }
+
+      } 
+
+      // create card and place product item into "card-list"
+      function placeCardItem(category, title, description, image, price) {
+        const template = document
+          .getElementById("card-template")
+          .content.cloneNode(true);
+
+
+          if(category == "men's clothing"){
+            template.querySelector(".icon").src = "https://cdn-icons-png.flaticon.com/512/3531/3531818.png";            
+          }
+          else if(category == "jewelery"){
+            template.querySelector(".icon").src = "https://cdn-icons-png.flaticon.com/512/5029/5029347.png";
+          }
+          else if(category == "electronics"){
+            template.querySelector(".icon").src = "https://cdn-icons-png.flaticon.com/512/1555/1555401.png";
+          }
+          else if(category == "women's clothing"){
+            template.querySelector(".icon").src = "https://cdn-icons-png.flaticon.com/512/4378/4378432.png";
+          }
+
+          
+
+          
+          
+          template.querySelector(".icon").alt = category;
+
+        template.querySelector(".card-title").innerText = title;
+        template.querySelector(".card-text").innerText = description;
+        template.querySelector(".card-img-top").src = image;
+        template.querySelector("#priceID").innerText = `$ ${price}`;       
+                
+        document.querySelector("#card-list").appendChild(template);
+      }
+      
+
+      // create card and place product item into "card-list"
+      function placeCategoryItem(title) {
+        const option = document.createElement('option');
+
+        option.value = title;         
+        option.innerText = title; 
+
+        document.querySelector(".category-select").appendChild(option);
+      }
+
+
+      async function loadCategories(){
+
+        await fetch("http://localhost:3000/store/categories")
+        .then((response) => response.json())
+        .then((categories) => {
+          categories.forEach((item) => placeCategoryItem(item));  
+        });
+
+      }
+
+      async function loadItems(category = '', features = '', order = ''){
+
+        clearCardList();
+
+        await fetch(`http://localhost:3000/store/items?category=${category}&features=${features}&order=${order}`)
+        .then((response) => response.json())
+        .then((items) => {
+          items.forEach((item) => placeCardItem(item.category, item.title, item.description, item.image, item.price));
+        });
+
+      }
+
+      loadCategories();
+
+      loadItems();
+
+    </script>
+  </body>
+</html>
