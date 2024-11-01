@@ -6,6 +6,7 @@ import Welcome from "../pages/welcome";
 import PropsDisplayer from "../pages/PropsDisplayer";
 import City from "../pages/City";
 import Pet from "../pages/Pet";
+import ExplodingBomb from "../components/ExplodingBomb";
 
 function App() {
 
@@ -14,6 +15,8 @@ function App() {
   return (
     <>
       <div>       
+
+        <ExplodingBomb/>
 
         <Pet />
 

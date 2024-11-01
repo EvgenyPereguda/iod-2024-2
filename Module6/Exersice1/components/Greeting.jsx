@@ -13,15 +13,14 @@ const styles = {
 }
 
 function Greeting(props) {
-    
-    let name = " World"; 
-    
+        
     if (props.name) name = props.name; 
     
     return (
       <div style={styles.main}>
         {props.children}
-        <div>{name}</div>
+        <div>&nbsp;</div>
+        {props.name? <div>{name}</div> : <div>World</div>}
       </div>
     );
   }
