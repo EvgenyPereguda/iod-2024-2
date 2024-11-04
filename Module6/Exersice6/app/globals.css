@@ -5,6 +5,7 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --main-length: 2em;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -24,4 +25,52 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+.center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.calcButton{
+  border: 0.1em solid black;
+  margin-left: 0.1em;
+  margin-top: 0.1em;
+  margin-right: 0.1em;
+  margin-bottom: 0.1em;
+  font-size: calc(var(--main-length) * 0.9);
+}
+
+.calcButton:hover {
+  background-color: green;
+  color: white;
+}
+
+.buttonsPanel{
+  border: calc(var(--main-length) / 11) solid black;
+  padding-top: 0.1em;
+  padding-bottom: 0.1em;
+  padding-left: 0.1em;
+  padding-right: 0.1em;
+  background: lightblue;
+  display: grid;
+  grid-template-columns: [first] 25% [second] 25% [third] 25% [fourth] 25% [end];
+  grid-template-rows: [first] 'auto' [second] 'auto' [third] 'auto' [fourth] 'auto' [fifth] 'auto' [sixth] 'auto' [end];
+}
+
+.displayPanel{
+  border: calc(var(--main-length) / 11) solid black;
+  margin-bottom: 0.1em;
+}
+
+.calculatorPanel{
+  width: calc(var(--main-length) * 20);
+  height: calc(var(--main-length) * 20);
+}
+
+.displayArg{
+  height: 1.5em; 
+  padding-left: 0.25em;
+  font-size: var(--main-length);
 }

@@ -11,6 +11,13 @@ const geistMono = localFont({
   variable: "--font-geist-mono",
   weight: "100 900",
 });
+const LcdDMono = localFont({
+  src: "./fonts/LcdD.ttf",
+  variable: "--font-lcdd-mono",
+  weight: "100 900",
+});
+
+
 
 export const metadata = {
   title: "Create Next App",
@@ -21,7 +28,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+         className={`${geistSans.variable} ${geistMono.variable} ${LcdDMono.variable} antialiased`}
       >
         {children}
       </body>
