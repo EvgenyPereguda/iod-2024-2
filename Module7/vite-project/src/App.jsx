@@ -9,6 +9,7 @@ import LoginForm from '../components/LoginForm'
 import ClockDisplay from "../components/ClockDisplay";
 import MyThemeProvider from '../context/MyThemeProvider'
 import ThemeSwitcher from '../components/ThemeSwitcher'
+import NavBar from '../components/NavBar'
 
 function App() {
 
@@ -16,9 +17,10 @@ function App() {
     <>
       <UserProvider>
         <MyThemeProvider>
-          <ThemeSwitcher/>
+          <NavBar/>
+          {/* <ThemeSwitcher/>
         <LoginForm/>
-        <ClockDisplay/>
+        <ClockDisplay/> */}
        </MyThemeProvider>
       </UserProvider>
     </>
