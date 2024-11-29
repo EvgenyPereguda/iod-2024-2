@@ -1,8 +1,8 @@
 import { useState, useEffect, useContext } from "react";
+import { MyThemeContext } from "../context/MyThemeProvider";
 import { Box } from '@mui/system';
 import { TextField, Checkbox, Select, MenuItem, Button } from "@mui/material";
 import { FormControl, FormControlLabel, InputLabel } from "@mui/material";
-import { MyThemeContext } from "../context/MyThemeProvider";
 
 
 const currencies = ["USD", "AUD", "NZD", "GBP", "EUR", "SGD"];
