@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      .container {
+        display: flex;
+        min-height: 100vh;
+        align-items: stretch;
+      }
+      .column {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        flex: 1;
+      }
+      .btnApply {
+        font-size: 25px;
+      }
+      .btnReset {
+        font-size: 25px;
+      }
+      .operation {
+        font-size: 25px;
+      }
+      .inputOprator {
+        font-size: 25px;
+      }
+      .Result {
+        font-size: 25px;
+      }
+      .Image {
+        margin: 1em;
+        object-fit: contain;
+        width: 20em;
+        height: 20em;
+      }
+      .Title{
+        font-size: 2em;
+      }
+    </style>
+    <title>Calculator</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="column" id="column1">
+        <h1 id="heading1">Operator First</h1>
+        <br />
+        <input
+          id="inputOprator1"
+          class="inputOprator"
+          value="0"
+          type="number"
+        />
+      </div>
+
+      <div class="column" id="column2">
+        <h1 id="heading2">Math Operation</h1>
+        <br />
+        <select id="operation" class="operation">
+          <option value="add">Add</option>
+          <option value="sub">Sub</option>
+          <option value="div">Div</option>
+          <option value="mult">Mult</option>
+        </select>
+      </div>
+
+      <div class="column" id="column3">
+        <h1 id="heading2">Operator Second</h1>
+        <br />
+        <input
+          id="inputOprator2"
+          class="inputOprator"
+          value="0"
+          type="number"
+        />
+      </div>
+
+      <div class="column" id="column4">
+        <h1 id="heading2"></h1>
+        <br />
+        <button class="btnApply" onclick="doCalculation()">Equals</button>
+      </div>
+
+      <div class="column" id="column5">
+        <h1 id="heading2">Result</h1>
+        <br />
+        <div id="Result" class="Result">0</div>
+      </div>
+
+      <div class="column" id="column6">
+        <button class="btnReset" onclick="doReset()">Reset</button>
+      </div>
+
+    </div>
+    
+
+    <script>
+      async function doCalculation() {
+        let strOperator1 = document.getElementById("inputOprator1").value;
+
+        let strOperator2 = document.getElementById("inputOprator2").value;
+
+        let op1 = parseInt(strOperator1);
+
+        let op2 = parseInt(strOperator2);
+
+        let operation = document.getElementById("operation").value;
+
+        let result = "Error";
+
+        await fetch("/calculator/" + operation + `?num1=${op1}&num2=${op2}`)
+          .then((response) => response.json())
+          .then((data) => (result = data.result))
+          .catch((error) => (result = error));
+
+        document.getElementById("Result").innerText = result;
+      }
+
+      function doReset() {
+        document.getElementById("inputOprator1").value = 0;
+
+        document.getElementById("inputOprator2").value = 0;
+
+        document.getElementById("Result").innerText = 0;
+      }
+    </script>
+  </body>
+</html>

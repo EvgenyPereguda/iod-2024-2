@@ -1,0 +1,52 @@
+:root{
+  --background-main: white;
+}
+
+
+.page-footer{
+  background-color: var(--background-main);
+}
+main {
+  flex: 1 0 auto;
+}
+
+.card .card-image img{
+  height: 200px;
+
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.row {
+  display: flex;
+}
+
+.column_1 {
+  flex-grow: 1;
+}
+
+.column_2 {
+  flex-grow: 2;
+}
+
+.column_3 {
+  flex-grow: 3;
+}
+
+::backdrop {
+  background-color: var(--background-main);
+  opacity: 0.75;
+}
+
+.border {border-style: double;}
+
+.image {
+  margin: 1em;
+  object-fit: contain;
+  width: 10em;
+  height: 10em;
+}

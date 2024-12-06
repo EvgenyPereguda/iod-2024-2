@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Blog on MySQL</title>
+    <link href="styles.css" rel="stylesheet">
+</head>
+
+<body>
+    <template id="createUserPanel-template">
+        <form id="createNewUserForm">
+            <h3>Create new user form dialog</h3>
+            <p>
+              <label for="firstName">Enter your first name: </label>
+              <input type="text" name="firstName" id="firstName" required />
+            </p>
+            <div>
+              <label for="lastName">Enter your last name: </label>
+              <input type="text" name="lastName" id="lastName" required />
+            </div>
+            <div >
+              <label for="email">Enter your email: </label>
+              <input type="email" name="email" id="email" required />
+            </div>
+            <div >
+              <label for="password">Enter your password: </label>
+              <input type="password" name="password" id="password" required />
+            </div>
+            <div >
+              <input type="button" value="Create new user!" onclick="submitCreateNewUserForm()" />
+            </div>
+          </form>
+    </template>
+
+    <template id="createPostPanel-template">
+        <form id="createNewPostForm">
+            <h3>Create new post form dialog</h3>
+            <h4>
+                <div id="userNameLbl">User name: </div>
+            </h4>
+            <p>
+              <label for="Title">Enter post title: </label>
+              <input type="text" name="Title" id="Title" required />
+            </p>
+            <div>
+              <label for="Description">Enter post content: </label>
+              <input type="text" name="Description" id="Description" required />
+            </div>
+            <div >
+              <label for="Image">Enter image link: </label>
+              <input type="text" name="Image" id="Image" required />
+            </div>
+            <div >
+              <input type="button" value="Create new post!" onclick="submitCreateNewPostForm()" />
+            </div>
+          </form>
+    </template>
+
+    <template id="createLikePanel-template">
+        <form id="createNewLikeForm">
+            <h3>Create new like form dialog</h3>
+            <h4>
+                <div id="userNameLbl">User name: </div>
+            </h4>
+            <p>
+              <label for="Comment">Enter comment: </label>
+              <input type="text" name="Comment" id="Comment" required />
+            </p>
+            <div id="likeBtnDiv">
+              <!-- <input type="button" value="Create new like!" onclick="submitCreateNewLikeForm()" /> -->
+            </div>
+          </form>
+    </template>
+
+    <template id="userItem-template">
+        <div id="userItemContent"/>
+    </template>
+
+    
+    <template id="postItem-template">
+        <div class="border">
+            <h4 id="postAuthor">Author: </h4>
+            <h4 id="postTitle"></h4>
+            <p id="postContent"></p>
+            <img id="postImage" class="image" alt="Unloaded image"/>
+            
+            <div id="likeIt"></div>
+
+            <hr/>
+            <h5>Likes:</h5>
+            <dvi id="likesList"/>
+        </div>
+    </template>
+
+    
+    <template id="likeItem-template">
+        <div class="border">
+            <h4 id="likeAuthor">Author: </h4>
+            <p id="likeContent"></p>
+        </div>
+    </template>
+
+    <dialog>
+        <div>
+            <div id="dialogTitle"/>
+            <div id="container"/>
+        </div>
+    </dialog>
+    
+    <main>
+        
+      <div class="center">
+        <div>Current user: </div>
+        <div id="currentUserPresenter">unchosen!!!</div>
+      </div>
+
+        <div class="row">
+            <div class="column_1">
+                <div class="center">
+                    <button onclick="showCreateNewUserFormDIalog()" >Add user</button>
+                </div>
+                <div class="center">
+                    <p>Users list</p>
+                </div>
+                <div class="center">
+                  <dvi id="usersList"/>
+                </div>
+            </div>
+            <div class="column_3">
+                <div class="center">
+                    <button id="addPostBtn" onclick="showCreateNewPostFormDialog()" disabled>Add post</button>
+                </div>
+                <div class="center">
+                    <p>Posts list</p>
+                </div>
+                <dvi id="postsList"/>
+            </div>
+            <div class="column_3">
+                <div class="center">
+                    <button onclick="loadPosts()">Show all posts</button>
+                </div>
+                <div class="center">
+                    <p>All posts list</p>
+                </div>
+                <dvi id="allPostsList"/>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="index.js"></script>
+
+</body>
+
+</html>
