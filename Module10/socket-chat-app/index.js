@@ -88,7 +88,7 @@ function statusIsOnlineCheck(){
   
   if(currentUsersMap.size == 0)
   {        
-    return;
+      return;
   }
 
   let listOnlineUsers = "";
